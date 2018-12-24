@@ -1,11 +1,21 @@
 const fs = require('fs');
 
+class Ticket {
+    constructor(number, desktop) {
+        this.number = number;
+        this.desktop = desktop;
+    }
+}
+
+
+
 class TicketControl {
 
     constructor() {
 
         this.last = 0; // Last ticket i gave
         this.today = new Date().getDate();
+        this.tickets = [];
 
         let data = require('../data/data.json');
         // Every new day I will restart the queue system
@@ -14,6 +24,7 @@ class TicketControl {
         if (data.today === this.today) {
 
             this.last = data.last;
+            this.tickets = data.tickets;
 
         } else {
 
@@ -25,6 +36,10 @@ class TicketControl {
     next() {
 
         this.last += 1;
+
+        let ticket = new Ticket(this.last, null);
+        this.tickets.push(ticket);
+
         this.saveFile();
 
         return `Ticket ${this.last}`
@@ -40,6 +55,7 @@ class TicketControl {
     restartCount() {
 
         this.last = 0;
+        this.tickets = [];
         console.log('System has been initialized');
 
         this.saveFile();
@@ -50,7 +66,8 @@ class TicketControl {
 
         let jsonData = {
             last: this.last,
-            today: this.today
+            today: this.today,
+            tickets: this.tickets
         };
 
         let jsonDataString = JSON.stringify(jsonData);
