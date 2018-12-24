@@ -1,4 +1,7 @@
 const { io } = require('../server');
+const { TicketControl } = require('../classes/ticket-control');
+
+const ticketControl = new TicketControl();
 
 
 // To know when an user (client) connects to the server
