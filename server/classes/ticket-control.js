@@ -16,6 +16,7 @@ class TicketControl {
         this.last = 0; // Last ticket i gave
         this.today = new Date().getDate();
         this.tickets = [];
+        this.last4 = [];
 
         let data = require('../data/data.json');
         // Every new day I will restart the queue system
@@ -25,6 +26,8 @@ class TicketControl {
 
             this.last = data.last;
             this.tickets = data.tickets;
+            this.last4 = data.last4;
+
 
         } else {
 
@@ -52,10 +55,35 @@ class TicketControl {
 
     }
 
+    attendTicket(desktop) {
+        if (this.tickets.length === 0) {
+            return 'There are no tickets';
+        }
+        let ticketNumber = this.tickets[0].number;
+        this.tickets.shift();
+
+        let attendTicket = new Ticket(ticketNumber, desktop);
+
+        this.last4.unshift(attendTicket);
+
+        if (this.last4.length > 4) {
+            this.last4.splice(-1, 1); // Deletes the last one
+        }
+
+        console.log('Last 4');
+        console.log(this.last4);
+
+        this.saveFile();
+
+        return attendTicket;
+    }
+
+
     restartCount() {
 
         this.last = 0;
         this.tickets = [];
+        this.last4 = [];
         console.log('System has been initialized');
 
         this.saveFile();
@@ -67,7 +95,8 @@ class TicketControl {
         let jsonData = {
             last: this.last,
             today: this.today,
-            tickets: this.tickets
+            tickets: this.tickets,
+            last4: this.last4
         };
 
         let jsonDataString = JSON.stringify(jsonData);
