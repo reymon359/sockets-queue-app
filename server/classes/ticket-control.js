@@ -1,9 +1,9 @@
 const fs = require('fs');
 
 class Ticket {
-    constructor(number, desktop) {
+    constructor(number, desk) {
         this.number = number;
-        this.desktop = desktop;
+        this.desk = desk;
     }
 }
 
@@ -55,14 +55,14 @@ class TicketControl {
 
     }
 
-    attendTicket(desktop) {
+    attendTicket(desk) {
         if (this.tickets.length === 0) {
             return 'There are no tickets';
         }
         let ticketNumber = this.tickets[0].number;
         this.tickets.shift();
 
-        let attendTicket = new Ticket(ticketNumber, desktop);
+        let attendTicket = new Ticket(ticketNumber, desk);
 
         this.last4.unshift(attendTicket);
 

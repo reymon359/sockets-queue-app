@@ -16,4 +16,17 @@ io.on('connection', (client) => {
         actual: ticketControl.getLastTicket()
     });
 
+    client.on('attendTicket', (data, callback) => {
+        // Check if the desk cams back from callback
+        if (!data.desk) {
+            return callback({
+                err: true,
+                message: 'The desk is required'
+            });
+        }
+
+        let attendTicket = ticketControl.attendTicket(data.desk);
+
+        callback(attendTicket);
+    });
 });
