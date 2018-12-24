@@ -31,6 +31,12 @@ class TicketControl {
 
     }
 
+
+    getLastTicket() {
+        return `Ticket ${this.last}`
+
+    }
+
     restartCount() {
 
         this.last = 0;

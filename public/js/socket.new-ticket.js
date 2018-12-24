@@ -13,6 +13,16 @@ socket.on('disconnect', function() {
     console.log('Disconnected from the server');
 });
 
+socket.on('actualState', function(resp) {
+    console.log(resp);
+
+    label.text(resp.actual);
+});
+
+
+
+
+
 $('button').on('click', function() {
     socket.emit('nextTicket', null, function(nextTicket) {
         label.text(nextTicket);

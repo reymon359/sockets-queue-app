@@ -11,4 +11,9 @@ io.on('connection', (client) => {
         console.log(next);
         callback(next);
     });
+
+    client.emit('actualState', {
+        actual: ticketControl.getLastTicket()
+    });
+
 });
