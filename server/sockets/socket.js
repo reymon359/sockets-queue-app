@@ -8,7 +8,6 @@ io.on('connection', (client) => {
 
     client.on('nextTicket', (data, callback) => {
         let next = ticketControl.next();
-        console.log(next);
         callback(next);
     });
 
@@ -18,7 +17,7 @@ io.on('connection', (client) => {
     });
 
     client.on('attendTicket', (data, callback) => {
-        // Check if the desk cams back from callback
+        // Check if the desk came back from callback
         if (!data.desk) {
             return callback({
                 err: true,

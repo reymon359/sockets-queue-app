@@ -14,8 +14,6 @@ socket.on('disconnect', function() {
 });
 
 socket.on('actualState', function(resp) {
-    console.log(resp);
-
     label.text(resp.actual);
 });
 
