@@ -54,14 +54,15 @@ class TicketControl {
         return `Ticket ${this.last}`
 
     }
-
+    getLast4() {
+        return this.last4;
+    }
     attendTicket(desk) {
         if (this.tickets.length === 0) {
             return 'There are no tickets';
         }
         let ticketNumber = this.tickets[0].number;
         this.tickets.shift();
-
         let attendTicket = new Ticket(ticketNumber, desk);
 
         this.last4.unshift(attendTicket);
