@@ -15,7 +15,12 @@ var lblTickets = [lblTicket1, lblTicket2, lblTicket3, lblTicket4];
 var lblDesks = [lblDesk1, lblDesk2, lblDesk3, lblDesk4];
 
 socket.on('actualState', function(data) {
-    console.log(data);
+    updateHTML(data.last4);
+});
+
+socket.on('last4', function(data) {
+    var audio = new Audio('audio/new-ticket.mp3');
+    audio.play();
     updateHTML(data.last4);
 });
 

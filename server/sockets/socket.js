@@ -29,5 +29,15 @@ io.on('connection', (client) => {
         let attendTicket = ticketControl.attendTicket(data.desk);
 
         callback(attendTicket);
+
+        // Update the last 4 tickets in the public window
+        client.broadcast.emit('last4', {
+            last4: ticketControl.getLast4()
+        });
+
+
+
     });
+
+
 });
