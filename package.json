@@ -1,5 +1,5 @@
 {
-    "name": "node-sockets",
+    "name": "node-sockets-queue",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
