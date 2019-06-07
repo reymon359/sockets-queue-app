@@ -13,23 +13,27 @@
 <body class="container">
     <h1>Queue app</h1>
     <h4>
-        An app to manage a public queue, It has 4 windows:
-    </h4>
-    New ticket, to create a new ticket. Desk, to attend the tickets in the queue. Index, to access the other windows and create dinamically a new desk window.
+        An app to manage a public queue
+    </h4><br>
+    <p>It has 4 windows:</p>
     <ul>
-        <li>Public, to show the actual state of the queue of tickets.</li>
+        <li> <b>Index page: </b> To access the other windows and create dinamically a new desk window. </li>
+        <li> <b>Public window: </b> to show the actual state of the queue of tickets and in which desk is each ticket </li>
+        <li> <b>Create tickets: </b> Where users create new tickets. Index, to access the other windows and create dinamically a new desk window.</li>
+        <li> <b>Desk window: </b>Where admins attend the queue tickets. You access it when you create a desk</li>
     </ul>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6 mb-4">
 
             <a class="btn btn-primary" href="public.html">Public window</a>
-            <a class="btn btn-secondary" href="new-ticket.html">Create tickets</a>
+            <a class="btn btn-secondary" href="new-ticket.html">Create tickets window</a>
 
         </div>
 
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <form action="desk.html">
-                <input name="desk" type="number" class="form-control" placeholder="desk" autofocus required>
+                <label for="desk">New desk</label>
+                <input name="desk" type="number" class="form-control" placeholder="desk number" autofocus required>
 
                 <br>
                 <button type="submit" class="btn btn-primary">
